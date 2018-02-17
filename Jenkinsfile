@@ -28,13 +28,7 @@ pipeline {
                         sh 'curl -X PUT -u admin:APTMavrHJnqV2XY -T ${WORKSPACE}/webapp/target/webapp.war "http://192.168.50.8:8090/artifactory/libs-release-local/com/mkyong/CounterWebApp/webapp-1.0.war"'
             }
         }
-        stage('deploy to tomcat from ansible playbook'){
-                steps {
-                    sh 'ansible-playbook /opt/deploy-tomcat-ansible.yml -i /etc/ansible -f 5 --private-key /tmp/ssh1105626470053572756.key -u root'
-					echo 'deploying war file'
-                }
-        }
-	}
+    }
 	agent {label "master"}
 	stages {
         stage('deploy to tomcat from ansible playbook'){
