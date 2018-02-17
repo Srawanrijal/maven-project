@@ -35,4 +35,13 @@ pipeline {
                 }
         }
 	}
+	agent {label "master"}
+	stages {
+        stage('deploy to tomcat from ansible playbook'){
+                steps {
+                    sh 'ansible-playbook /opt/deploy-tomcat-ansible.yml -i /etc/ansible -f 5 --private-key /tmp/ssh1105626470053572756.key -u root'
+					echo 'deploying war file'
+                }
+        }
+	}
 }
