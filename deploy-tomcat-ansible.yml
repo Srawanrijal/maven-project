@@ -8,9 +8,9 @@
         dest: /opt/tomcat/webapps/deploy-tomcat-ansible.war
     - name: stop tomcat
       shell: /opt/tomcat/bin/shutdown.sh
-    - debug:
-         var: output_line
+      register: stop-tomcat
+    - debug: var=stop-tomcat.stdout_lines
     - name: start tomcat
       shell: /opt/tomcat/bin/startup.sh
-    - debug:
-         var: output_line 
+      register: start-tomcat
+    - debug: var=start-tomcat.stdout_lines 
