@@ -1,5 +1,5 @@
 pipeline {
-    agent {label "linux"}
+    agent {label "master"}
     parameters {
 	choice(choices: 'build\ndev\nqa',name:'Stage')  
 	}
@@ -30,7 +30,7 @@ pipeline {
         }
         stage('deploy to tomcat from ansible playbook'){
                 steps {
-                    sh 'ansible-playbook /opt/deploy-tomcat-ansible.yml -i /etc/ansible -f 5 --private-key /tmp/ssh1105626470053572756.key -u root'
+                     ansiblePlaybook credentialsId: 'dbab669b-5a6a-47ff-87fc-76a8ca81d442', inventory: '/etc/ansible/hosts', playbook: 'deploy-tomcat-ansible.yml', sudoUser: null
 					echo 'deploying war file'
                 }
         }
