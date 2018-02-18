@@ -1,5 +1,5 @@
 ---
-- hosts: servers
+- hosts: client-server
   remote_user: root
   tasks:
     - name: Download .war
