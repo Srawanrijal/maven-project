@@ -25,7 +25,7 @@ pipeline {
         }
         stage('upload to artifactory'){
                 steps {
-                        sh 'curl -X PUT -u admin:APBRGkS37r4D8ndDPnqbAb8yUUe -T ${WORKSPACE}/webapp/target/webapp.war "http://192.168.50.226:8081/artifactory/libs-release-local/com/mkyong/CounterWebApp/webapp-1.0.war"'
+                        sh 'curl -X PUT -u admin:APBRGkS37r4D8ndDPnqbAb8yUUe -T ${WORKSPACE}/webapp/target/webapp.war "http://http://192.168.0.184:8081/artifactory/libs-release-local/com/mkyong/CounterWebApp/webapp-1.0.war"'
             }
         }
         stage('deploy to tomcat from ansible playbook'){
